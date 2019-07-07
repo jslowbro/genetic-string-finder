@@ -1,14 +1,7 @@
 import random
 
-
-class Candidate:
-
-    def __init__(self, word):
-        self.word = word
-        self.truth_list = len(word) * [0]
-
-    def __repr__(self):
-        return "\n" + self.word + "\n" + self.truth_list.__str__() + "\n"
+from candidate import Candidate
+from evolution_chamber_util import swap_str_character
 
 
 def evaluate_candidate(candidate: Candidate, target: str):
@@ -38,21 +31,6 @@ def random_fixed_size_candidates(word_set, length: int, no_candidates: int):
             word = word + random.choice(word_set)
 
         candidate_list.append(Candidate(word))
-    return candidate_list
-
-
-def write_candidates_to_file(file_name: str, candidate_list: []):
-    with open(file_name, 'w+') as f:
-        for candidate in candidate_list:
-            f.write(candidate.word + '\n')
-
-
-def read_candidates_from_file(file_name: str):
-    candidate_list = []
-    with open(file_name, 'r') as f:
-        contents = f.readlines()
-    for i in contents:
-        candidate_list.append(Candidate(i.replace('\n', '')))
     return candidate_list
 
 
@@ -89,9 +67,3 @@ def breed(candidates: [], word_set: str, one_pair_offspring: int):
                 offspring.extend(breed_pair(candidates[i], candidates[j], word_set, one_pair_offspring))
 
     return offspring
-
-
-def swap_str_character(word: str, char_index: int, new_char: str):
-    l = list(word)
-    l[char_index] = new_char
-    return "".join(l)
