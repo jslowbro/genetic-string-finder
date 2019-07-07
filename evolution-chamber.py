@@ -1,7 +1,7 @@
 import wordfinder as wf
 
 available_characters = "ABCDEFGHIJKLMNOPRSTUWXYZ "
-target_word = "ZAWSZE TRZECH ICH BYLO"
+target_word = "GIMME GIMME GIMME A MAN AFTER MIDNIGHT"
 
 
 def evolve(target, character_set, max_iterations, parent_group_size, one_pair_offspring, save_dir_path):
@@ -22,4 +22,4 @@ def evolve(target, character_set, max_iterations, parent_group_size, one_pair_of
     return -1
 
 
-evolve(target_word, available_characters, 100, 2, 10, 'candidates')
+evolve(target_word, available_characters, 100, 5, 5, 'candidates')
