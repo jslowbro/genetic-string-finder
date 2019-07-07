@@ -1,3 +1,5 @@
+from candidate import Candidate
+
 def swap_str_character(word: str, char_index: int, new_char: str):
     l = list(word)
     l[char_index] = new_char
